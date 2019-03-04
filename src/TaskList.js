@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-class TaskList extends React.Component {
+class TaskList extends React.PureComponent {
   render() {
     const { tasks } = this.props;
     return (
