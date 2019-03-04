@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-class App extends Component {
+import TaskList from "./TaskList";
+import TaskInput from "./TaskInput";
+import UserBar from "./UserBar";
+
+class App extends React.Component {
   render() {
+    const { tasks, taskDraft } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <UserBar />
+        <TaskList tasks={tasks}/>
+        <TaskInput hasText={Boolean(taskDraft)} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  tasks: state.tasks,
+  taskDraft: state.taskDraft
+});
+
+export default connect(mapStateToProps, null)(App);
