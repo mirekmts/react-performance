@@ -7,11 +7,11 @@ import UserBar from "./UserBar";
 
 class App extends React.Component {
   render() {
-    const { tasks, taskDraft } = this.props;
+    const { tasks, taskDraft, setTaskState } = this.props;
     return (
       <div className="app">
         <UserBar />
-        <TaskList tasks={tasks}/>
+        <TaskList tasks={tasks} onClick={setTaskState} />
         <TaskInput hasText={Boolean(taskDraft)} />
       </div>
     );
